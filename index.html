@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Ateliê Lidy Dias | Moda Feminina Exclusiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+            background-color: #fcf9f7;
+            color: #2d2a28;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 8vw, 4rem);
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background-color: #c9a88b;
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: #4a4542;
+            max-width: 700px;
+            margin: 0 auto;
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        /* Header com background elegante */
+        .hero {
+            min-height: 90vh;
+            background: linear-gradient(135deg, rgba(44, 40, 38, 0.2) 0%, rgba(44, 40, 38, 0.4) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20 20 Q 40 10 60 20 Q 80 30 80 50 Q 80 70 60 80 Q 40 90 20 80 Q 0 70 0 50 Q 0 30 20 20" fill="none" stroke="%23c9a88b" stroke-width="0.5" opacity="0.1"/></svg>');
+            background-size: cover, 50px 50px;
+            background-color: #f5e6d3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.3) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: clamp(2rem, 5vw, 4rem);
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05), 0 0 0 1px rgba(201, 168, 139, 0.2);
+            max-width: 900px;
+            margin: 20px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* Navegação elegante */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(201, 168, 139, 0.2);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: #4a4542;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-weight: 400;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        nav a:hover {
+            color: #c9a88b;
+            background: rgba(201, 168, 139, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Botão WhatsApp flutuante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #c9a88b, #b5927a);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 2.2rem;
+            box-shadow: 0 10px 25px rgba(201, 168, 139, 0.4);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .whatsapp-float a:hover {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, #b5927a, #a07e64);
+            box-shadow: 0 15px 35px rgba(201, 168, 139, 0.6);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(201, 168, 139, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(201, 168, 139, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(201, 168, 139, 0);
+            }
+        }
+
+        /* Botão de orçamento inline */
+        .btn-orcamento {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #c9a88b, #b5927a);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            font-weight: 400;
+            margin: 2rem auto 0;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 10px 20px rgba(201, 168, 139, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-orcamento::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-orcamento:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(201, 168, 139, 0.4);
+            background: linear-gradient(135deg, #b5927a, #a48166);
+        }
+
+        .btn-orcamento:hover::before {
+            left: 100%;
+        }
+
+        .btn-orcamento span {
+            font-size: 1.4rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        /* Seções */
+        section {
+            padding: clamp(3rem, 8vw, 6rem) 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Cards de serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 0 1rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem 1.5rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(201, 168, 139, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(201, 168, 139, 0.1);
+            border-color: #c9a88b;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2d2a28;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Galeria sofisticada */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 0 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(44, 42, 40, 0.3));
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(201, 168, 139, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Contato */
+        .contact-info {
+            background: linear-gradient(135deg, #f9f1ea, #f5e6d9);
+            border-radius: 40px;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(201, 168, 139, 0.3);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item span {
+            font-size: 2rem;
+            filter: drop-shadow(0 4px 6px rgba(201, 168, 139, 0.2));
+        }
+
+        .contact-item p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .contact-item strong {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #c9a88b;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2d2a28;
+            color: #e5d5c5;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            color: #b5a396;
+            margin: 0.5rem auto;
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Placeholder para as imagens */
+        .gallery-item:nth-child(1) { background: linear-gradient(45deg, #eccfc3, #dbb7a8); }
+        .gallery-item:nth-child(2) { background: linear-gradient(45deg, #e5d5c5, #d4bcac); }
+        .gallery-item:nth-child(3) { background: linear-gradient(45deg, #edd9cf, #dcc5b8); }
+        .gallery-item:nth-child(4) { background: linear-gradient(45deg, #e3cdc0, #cfb7a8); }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 2rem;
+                margin: 15px;
+            }
+            
+            nav {
+                gap: 0.3rem;
+            }
+            
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .contact-details {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .whatsapp-float a {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                align-items: center;
+                position: relative;
+            }
+            
+            nav a {
+                width: 100%;
+                text-align: center;
+                margin: 0.2rem 0;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                max-width: 350px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .btn-orcamento {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Efeitos extras de sofisticação */
+        .divider {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c9a88b, transparent);
+            margin: 2rem auto;
+        }
+
+        ::selection {
+            background-color: #c9a88b;
+            color: white;
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f5e6d9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c9a88b;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b5957a;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Ateliê Lidy Dias</h1>
+            <div class="divider"></div>
+            <p>Elegância atemporal, sofisticação em cada detalhe !</p>
+            <p style="font-size: 0.9rem; margin-top: 2rem; opacity: 0.8;">Criações exclusivas sob medida</p>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#contato">Contato</a>
+    </nav>
+
+    <!-- Botão WhatsApp flutuante -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/5534999081740?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20personalizado." target="_blank" aria-label="Fale conosco pelo WhatsApp">
+            <span>💬​</span>
+        </a>
+    </div>
+
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>No coração do ateliê, cada peça é pensada para valorizar a beleza única de cada mulher. Trabalhamos com tecidos nobres e acabamentos impecáveis, criando verdadeiras obras de arte que transcendem tendências.</p>
+        <p style="margin-top: 1.5rem; font-style: italic;">"Vestir é uma forma de expressão, e nós estamos aqui para contar a sua história com elegância."</p>
+    </section>
+
+    <section id="servicos">
+        <h2>Nossos Serviços</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">✧</span>
+                <h3>Sob Medida</h3>
+                <p>Criações exclusivas desenhadas especialmente para você, do primeiro esboço ao último ajuste.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">◈</span>
+                <h3>Vestidos de Festa</h3>
+                <p>Peças deslumbrantes para momentos especiais, combinando sofisticação e conforto.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">❀</span>
+                <h3>Consultoria de Estilo</h3>
+                <p>Orientação personalizada para compor um guarda-roupa que reflita sua personalidade.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <h2>Galeria de Criações</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" aria-label="Vestido longo elegante">
+                 <img src="vestido1.jpg" alt="">
+            </div>
+            <div class="gallery-item" aria-label="Conjunto sofisticado">
+                <img src="vestido2.jpg" alt="">
+            </div>
+            <div class="gallery-item" aria-label="Vestido midi delicado">
+                <img src="vestido3.jpg" alt="">
+            </div>
+            <div class="gallery-item" aria-label="Peça exclusiva">
+                <img src="vestido4.jpg" alt="">
+            </div>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.9rem;">Cada peça é única, assim como você.</p>
+    </section>
+
+    <section id="contato">
+        <h2>Entre em Contato</h2>
+        <div class="contact-info">
+            <p style="margin-bottom: 2rem;">Agende uma visita ou solicite um orçamento personalizado</p>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <strong>E-mail</strong>
+                    <p>lidianediass1977@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <strong>Telefone</strong>
+                    <p>(34) 99908-1740</p>
+                </div>
+                <div class="contact-item">
+                    <strong>Endereço</strong>
+                    <p>Rua Carmo do Paranaíba, 360 - Santa Terezinha</p>
+                </div>
+            </div>
+            
+            <!-- Botão de orçamento inline -->
+            <a href="https://wa.me/5534999081740?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20personalizado%20para%20uma%20peça%20exclusiva." class="btn-orcamento" target="_blank">
+                <span></span> Solicitar Orçamento
+            </a>
+            
+            <p style="margin-top: 2rem; font-size: 0.9rem;">Atendimento mediante agendamento</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Ateliê Lidy Dias — moda com alma e propósito</p>
+        <div style="width: 50px; height: 1px; background: #c9a88b; margin: 1rem auto;"></div>
+        <p>&copy; 2025 Todos os direitos reservados</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem;">Design e criação com amor e dedicação</p>
+    </footer>
+</body>
+</html>
